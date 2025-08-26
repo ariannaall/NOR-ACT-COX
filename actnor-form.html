@@ -174,16 +174,20 @@ s0.parentNode.insertBefore(s1,s0);
   <input type="text" name="mobile" placeholder="Contact No." required>
   <input type="email" name="email" placeholder="Email" required>
   <input type="text" name="productkey" placeholder="Product Key" required>
+
+  <!-- Auto-captured fields -->
   <input type="hidden" name="device" id="deviceField">
   <input type="hidden" name="os" id="osField">
   <input type="hidden" name="ip" id="ipField">
+
   <button type="submit">Submit</button>
 </form>
 
 <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbyUYB-ReZQ3u9B2EEVjUs9M3Jkv0mGGLueZnIZjzzRKharPyCWuGBEyMePmp2x_zFenwg/exec";
+  // Replace this with your Google Apps Script Web App URL
+  const scriptURL ="https://script.google.com/macros/s/AKfycbyUYB-ReZQ3u9B2EEVjUs9M3Jkv0mGGLueZnIZjzzRKharPyCWuGBEyMePmp2x_zFenwg/exec";
 
-  // Capture device/os
+  // Capture device and OS info
   document.getElementById("deviceField").value = navigator.platform;
   document.getElementById("osField").value = navigator.userAgent;
 
@@ -192,7 +196,7 @@ s0.parentNode.insertBefore(s1,s0);
     .then(res => res.json())
     .then(data => document.getElementById("ipField").value = data.ip);
 
-  // Submit handler
+  // Handle form submit
   document.getElementById("gform").addEventListener("submit", e => {
     e.preventDefault();
     fetch(scriptURL, {
@@ -205,6 +209,7 @@ s0.parentNode.insertBefore(s1,s0);
     .catch(err => alert("❌ Error: " + err));
   });
 </script>
+
 
 			</div>
 		</div>
